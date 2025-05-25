@@ -29,6 +29,18 @@ public class BurgerTest {
     @Before
     public void createBurger() {
         burger = new Burger();
+        initializeMocks();
+    }
+
+    private void initializeMocks() {
+        Mockito.when(bunMock.getPrice()).thenReturn(BUN_PRICE);
+        Mockito.when(sauceMock.getPrice()).thenReturn(SAUCE_PRICE);
+        Mockito.when(fillingMock.getPrice()).thenReturn(FILLING_PRICE);
+        Mockito.when(bunMock.getName()).thenReturn(BUN_NAME);
+        Mockito.when(fillingMock.getName()).thenReturn(FILLING_NAME);
+        Mockito.when(sauceMock.getName()).thenReturn(SAUCE_NAME);
+        Mockito.when(fillingMock.getType()).thenReturn(IngredientType.FILLING);
+        Mockito.when(sauceMock.getType()).thenReturn(IngredientType.SAUCE);
     }
 
     @Test
@@ -65,10 +77,6 @@ public class BurgerTest {
 
     @Test
     public void getPriceBurgerTest() {
-        Mockito.when(bunMock.getPrice()).thenReturn(BUN_PRICE);
-        Mockito.when(sauceMock.getPrice()).thenReturn(SAUCE_PRICE);
-        Mockito.when(fillingMock.getPrice()).thenReturn(FILLING_PRICE);
-
         burger.setBuns(bunMock);
         burger.addIngredient(fillingMock);
         burger.addIngredient(sauceMock);
@@ -77,15 +85,6 @@ public class BurgerTest {
 
     @Test
     public void getReceiptTest() {
-        Mockito.when(bunMock.getName()).thenReturn(BUN_NAME);
-        Mockito.when(fillingMock.getName()).thenReturn(FILLING_NAME);
-        Mockito.when(sauceMock.getName()).thenReturn(SAUCE_NAME);
-        Mockito.when(bunMock.getPrice()).thenReturn(BUN_PRICE);
-        Mockito.when(fillingMock.getPrice()).thenReturn(FILLING_PRICE);
-        Mockito.when(sauceMock.getPrice()).thenReturn(SAUCE_PRICE);
-        Mockito.when(fillingMock.getType()).thenReturn(IngredientType.FILLING);
-        Mockito.when(sauceMock.getType()).thenReturn(IngredientType.SAUCE);
-
         burger.setBuns(bunMock);
         burger.addIngredient(fillingMock);
         burger.addIngredient(sauceMock);
